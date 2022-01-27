@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -r --color=auto "$1" $(ls | grep -vE 'log|tmp|doc|vendor|historical')
