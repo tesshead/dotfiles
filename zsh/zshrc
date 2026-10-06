@@ -1,0 +1,46 @@
+# ---------- History ----------
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=5000
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+
+# ---------- Shell ----------
+export PATH="$HOME/.local/bin:$PATH"
+export LSCOLORS=GxBxCxDxFxegedabagaced
+
+alias ls='ls -GFhla'
+
+# ---------- Git ----------
+alias gd='git diff'
+alias gm='git checkout main && git pull && git remote prune origin'
+alias gp='git pull'
+alias gpr='git pull && git remote prune origin'
+alias gs='git status'
+alias gb='git branch'
+alias gbd='git branch -D'
+alias gc='git clean -fd'
+
+# ---------- Prompt ----------
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+prompt_icon() {
+  case "$PWD" in
+    "$HOME/cauldron"*) echo "🪄" ;;
+    *)                 echo "✨" ;;
+  esac
+}
+
+setopt PROMPT_SUBST
+zstyle ':vcs_info:git:*' formats ' (%b)'
+
+PROMPT='%B%F{green}%n@%m%f %F{69}%~${vcs_info_msg_0_}%f $(prompt_icon)%b '
+
+# ---------- Dev tooling ----------
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
+
+# ---------- Personal commands ----------
+alias lf='look-for'

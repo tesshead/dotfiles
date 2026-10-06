@@ -33,6 +33,7 @@ nnoremap <Tab> :bnext<cr>
 nnoremap <S-Tab> :bprevious<cr>
 nnoremap <leader>d :BD<cr>
 nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
+nnoremap <leader>i gg=G``
 
 fun! TrimWhitespace()
   let l:save = winsaveview()
@@ -47,7 +48,6 @@ augroup END
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'rking/ag.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'lincheney/fzf-tab-completion'
 Plug 'zivyangll/git-blame.vim'

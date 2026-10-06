@@ -1,0 +1,12 @@
+brew "mise"
+brew "gh"
+brew "fzf"
+brew "ripgrep"
+brew "git-delta"
+brew "figlet"
+brew "git-lfs"
+brew "vim"
+
+cask "iterm2"
+cask "1password"
+cask "sequel-ace"
